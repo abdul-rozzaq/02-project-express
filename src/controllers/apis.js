@@ -1,12 +1,9 @@
 import { Router } from "express";
 
-import multer from "multer";
 import { addNewPage, addObject, deleteObject, getAllPages, getObject, getPage, updateObject } from "../services/apis.service.js";
 
 
 const router = Router();
-
-const upload = multer();
 
 
 router.get("/", getAllPages)
