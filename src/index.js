@@ -25,4 +25,4 @@ app.set("views", path.join(__dirname, '..', 'views'))
 app.use(ApisController)
 
 
-app.listen(PORT, () => console.log('Server is running on 8080'));
+app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
