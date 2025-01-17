@@ -63,7 +63,7 @@ export function addObject(request, response) {
     const { name } = request.params;
 
     const page = db.getPage(name);
-    const pageObject = { id: db.generateId(), ...request.body };
+    const pageObject = { id: page.index, ...request.body };
 
     page.index++;
 

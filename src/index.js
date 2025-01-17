@@ -14,6 +14,17 @@ const hbs = create({
 })
 
 
+const logger = (req, res, next) => {
+    const now = new Date();
+    const timestamp = now.toISOString();
+    const method = req.method;
+    const url = req.url;
+
+    console.log(`[${timestamp}] [${method}] ${url}`);
+
+    return next();
+};
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -22,7 +33,7 @@ app.engine("hbs", hbs.engine)
 app.set("view engine", "hbs")
 app.set("views", path.join(__dirname, '..', 'views'))
 
-app.use(ApisController)
+app.use(logger, ApisController)
 
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
