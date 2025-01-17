@@ -1,8 +1,11 @@
 import express from 'express';
 import { create } from 'express-handlebars';
 
+import path from 'path';
 import ApisController from './controllers/apis.js';
 
+const __dirname = import.meta.dirname;
+const PORT = process.env.PORT || 4100
 const app = express();
 
 const hbs = create({
@@ -17,9 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.engine("hbs", hbs.engine)
 app.set("view engine", "hbs")
-app.set("views", "./views")
+app.set("views", path.join(__dirname, '..', 'views'))
 
 app.use(ApisController)
 
 
-app.listen(8080, () => console.log('Server is running on 8080'));
+app.listen(4100, () => console.log('Server is running on 8080'));

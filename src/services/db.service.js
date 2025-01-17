@@ -1,9 +1,12 @@
 import fs from 'fs';
+import path from 'path';
+
+const __dirname = import.meta.dirname
 
 export class JSONDbManager {
     constructor() {
         this.data = [];
-        this.fileName = 'db/db.json';
+        this.fileName = path.join(__dirname, '..', '..', 'db', 'db.json');
         this.load();
     }
 
